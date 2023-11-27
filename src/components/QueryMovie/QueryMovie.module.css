@@ -1,0 +1,18 @@
+.PhotoQuery{
+    width: 300px;
+    height: 500px;
+    background-color: #eeff7f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid darkgrey;
+    margin: 10px;
+    border-radius: 5px;
+
+}
+.PhotoQueryImg{
+    width: 250px;
+    height: 350px;
+    margin-top: 10px;
+}

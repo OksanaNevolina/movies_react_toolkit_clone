@@ -1,0 +1,12 @@
+.GenreWrap{
+    color: #55065e;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: wrap;
+    justify-content: space-around;
+    width: calc(100%- 20px) ;
+    padding: 20px;
+
+
+}
