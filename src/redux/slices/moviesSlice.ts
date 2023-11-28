@@ -9,7 +9,9 @@ moviesList:IMovie[],
     errors:boolean,
     movieId:IMovieId,
     casts:ICast[],
-    posters:FilePpath[]
+    posters:FilePpath[],
+    total_pages:number
+
 }
 
 const initialState:IState={
@@ -18,7 +20,8 @@ const initialState:IState={
     errors:null,
     movieId:null,
     casts:[],
-    posters:[]
+    posters:[],
+    total_pages:0
 
 };
 
@@ -78,9 +81,10 @@ const moviesSlice = createSlice({
     reducers:{},
     extraReducers:builder => builder
         .addCase(getMoviesList.fulfilled,(state, action) => {
-            const {page,results} = action.payload;
+            const {page,results,total_pages} = action.payload;
             state.page = page
             state.moviesList = results
+            state.total_pages= total_pages
         })
         .addCase(getMovieId.fulfilled,(state, action) => {
             state.movieId = action.payload;

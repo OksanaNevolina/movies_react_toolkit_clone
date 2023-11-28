@@ -1,7 +1,7 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {MainLayount} from "./layounts";
 import {GenrePage, MoviesPage, SearchPage} from "./pages";
-import {MovieFilter, MovieInfo, PosterPreview} from "./components";
+import {MovieInfo, MoviesList,PosterPreview} from "./components";
 
 
 const router = createBrowserRouter([
@@ -31,7 +31,11 @@ const router = createBrowserRouter([
             },
             {
                 path:'genres/:id' ,
-                element:<MovieFilter/>
+                element:<MoviesList/>
+            },
+            {
+                path:'genres/:id/:id' ,
+                element:<MovieInfo/>
             },
             {
                 path:'search',

@@ -47,7 +47,7 @@ const MovieInfoDetails:FC<IProps> = ({movieDetails}) => {
                 </div>
                 <div>
                     <h2>Main cast :</h2>
-                    <div className={css.Cast}>{casts.map(cast=><Cast cast={cast}key={cast.id}/>)}</div>
+                    <div className={css.Cast}>{casts.map(cast=><Cast cast={cast} key={cast.id}/>)}</div>
                 </div>
             </>
         </div>

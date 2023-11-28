@@ -1,23 +1,26 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {IMovie, IResponseMovies} from "../../interfaces";
+import {IMovie,ISearch} from "../../interfaces";
 import {searchService} from "../../services";
 import {AxiosError} from "axios";
 
 
 interface IState {
     moviesSearch:IMovie[],
-    pages:number
+    pages:number,
+    total_pages:number
 }
 
 const initialState:IState = {
     moviesSearch:[],
-    pages:0
+    pages:0,
+    total_pages:0
+
 };
-const getMoviesSearch = createAsyncThunk<IResponseMovies,{query:string}>(
+const getMoviesSearch = createAsyncThunk<ISearch,{query:string,page:string}>(
     'searchSlices/getMoviesSearch',
-    async ({query},{rejectWithValue})=>{
+    async ({query,page},{rejectWithValue})=>{
         try {
-            const {data} = await searchService.word(query);
+            const {data} = await searchService.word(query,page);
             return data
         }catch (e) {
             const err = e as AxiosError
@@ -25,6 +28,7 @@ const getMoviesSearch = createAsyncThunk<IResponseMovies,{query:string}>(
         }
     }
 )
+
 const searchSlices = createSlice({
     name:'searchSlices',
     initialState,
@@ -33,6 +37,7 @@ const searchSlices = createSlice({
         .addCase(getMoviesSearch.fulfilled,(state, action) => {
             state.moviesSearch = action.payload.results
             state.pages = action.payload.page
+            state.total_pages =action.payload.total_pages
         })
 })
 

@@ -9,25 +9,42 @@ import {searchActions} from "../../redux/slices/searchSlices";
 
 
 
+
 const Search = () => {
     const [queryMovie,setQueryMovie] = useSearchParams({query:'marvel'});
     const query:string = queryMovie.get('query')
     console.log(query)
 
-    // const [queryPagSearch,setQueryPagSearch] = useSearchParams({page:'1'});
-    // const page = queryPagSearch.get('page')
+    const [queryPagSearch,setQueryPagSearch] = useSearchParams({page:'1'});
+    const page = queryPagSearch.get('page')
     const dispatch = useAppDispatch();
-    const {moviesSearch,pages} = useAppSelector(state => state.searchReducer);
+    const {moviesSearch,total_pages} = useAppSelector(state => state.searchReducer);
 
 
     const {register,handleSubmit,reset} = useForm<IWord>();
 
-    useEffect(() => {
-      dispatch(searchActions.getMoviesSearch({query}))
-            reset()
-    },[query])
+    const currentQuery = query;
+    const currentPage = page;
 
-const getWord: SubmitHandler<IWord> = (qwe) => {
+    useEffect(() => {
+        dispatch(searchActions.getMoviesSearch({ query: currentQuery, page: currentPage }));
+        reset();
+    }, [currentQuery, currentPage]);
+
+    const prev = () => {
+        setQueryPagSearch(prev => {
+            prev.set('page',`${+prev.get('page')-1}`)
+            return prev
+        })
+    }
+    const next = () => {
+        setQueryPagSearch(prev => {
+            prev.set('page',`${+prev.get('page')+1}`)
+            return prev
+        })
+    }
+
+    const getWord: SubmitHandler<IWord> = (qwe) => {
     setQueryMovie(prev => {
         prev.set('query', `${qwe.name}`)
         return prev
@@ -44,13 +61,13 @@ console.log(moviesSearch)
                 <button>Search</button>
             </form>
             <div className={css.SearchMovie}>{moviesSearch.map((movieSearch)=><QueryMovie key={movieSearch.id} movieSearch={movieSearch}/>)}</div>
-            {/*<Pagination*/}
-            {/*    count={10}*/}
-            {/*    defaultPage={+queryPagSearch.get('page')}*/}
-            {/*    variant="outlined"*/}
-            {/*    color="primary"*/}
-            {/*    onChange={(event, pages) =>setQueryPagSearch({page: pages.toString()})}*/}
-            {/*/>*/}
+            <div className={css.DivBut}>
+                <button
+                    onClick={prev}>prev</button>
+                <button onClick={next}>next</button>
+                <div>{currentPage} --{total_pages}</div>
+            </div>
+
         </div>
     );
 }

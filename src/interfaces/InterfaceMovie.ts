@@ -21,7 +21,8 @@ interface IMovie {
 
 interface IResponseMovies {
     page:number,
-    results: IMovie[]
+    results: IMovie[],
+    total_pages: number
 }
 interface IGenresMovieId {
     id: number,
