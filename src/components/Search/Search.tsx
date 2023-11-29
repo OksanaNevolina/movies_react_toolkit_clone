@@ -13,8 +13,6 @@ import {searchActions} from "../../redux/slices/searchSlices";
 const Search = () => {
     const [queryMovie,setQueryMovie] = useSearchParams({query:'marvel'});
     const query:string = queryMovie.get('query')
-    console.log(query)
-
     const [queryPagSearch,setQueryPagSearch] = useSearchParams({page:'1'});
     const page = queryPagSearch.get('page')
     const dispatch = useAppDispatch();
@@ -26,9 +24,26 @@ const Search = () => {
     const currentQuery = query;
     const currentPage = page;
 
+    const getWord: SubmitHandler<IWord> = (qwe) => {
+        setQueryMovie(prev => {
+            prev.set('query', `${qwe.name}`)
+            return prev
+        });
+    }
+
+    useEffect(()=>{
+            if (currentQuery !== query) {
+                setQueryPagSearch(prev => {
+                    prev.set('page', '1');
+                    return prev;
+                });
+            }
+    },[currentQuery])
+
+
     useEffect(() => {
-        dispatch(searchActions.getMoviesSearch({ query: currentQuery, page: currentPage }));
-        reset();
+        dispatch(searchActions.getMoviesSearch({query: currentQuery, page: currentPage}));
+        reset()
     }, [currentQuery, currentPage]);
 
     const prev = () => {
@@ -44,13 +59,9 @@ const Search = () => {
         })
     }
 
-    const getWord: SubmitHandler<IWord> = (qwe) => {
-    setQueryMovie(prev => {
-        prev.set('query', `${qwe.name}`)
-        return prev
-    })
 
-}
+    const isPrevButtonDisabled = +currentPage <= 1;
+    const isNextButtonDisabled = +currentPage >= total_pages;
 console.log(query)
 console.log(moviesSearch)
 
@@ -63,9 +74,15 @@ console.log(moviesSearch)
             <div className={css.SearchMovie}>{moviesSearch.map((movieSearch)=><QueryMovie key={movieSearch.id} movieSearch={movieSearch}/>)}</div>
             <div className={css.DivBut}>
                 <button
-                    onClick={prev}>prev</button>
-                <button onClick={next}>next</button>
+                    disabled={isPrevButtonDisabled}
+                    onClick={prev}>prev
+                </button>
                 <div>{currentPage} --{total_pages}</div>
+                <button
+                    disabled={isNextButtonDisabled}
+                    onClick={next}>next
+                </button>
+
             </div>
 
         </div>
@@ -74,4 +91,4 @@ console.log(moviesSearch)
 
 export {
     Search
-}
+};
