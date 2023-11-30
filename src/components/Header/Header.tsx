@@ -11,9 +11,12 @@ import {changeTheme} from "../../redux";
 const Header = () => {
     const dispatch = useAppDispatch();
     const {theme} = useAppSelector(state => state.themeReducer);
+
+
+
     return (
-        <div >
-        <div className={css.Header}>
+        <div className={css.Scrolled} >
+        <div className={css.Header }>
             <div className={css.Logo}>The MovieDB</div>
             <div  className={css.Navlink}>
                 <NavLink to={'/movies'}>MOVIES</NavLink>

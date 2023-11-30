@@ -67,11 +67,11 @@ console.log(moviesSearch)
 
     return (
         <div className={css.Search}>
-            <form onSubmit={handleSubmit(getWord)} className={css.SearchForm}>
+            <form onSubmit={handleSubmit(getWord)} className={`${css.SearchForm} ${css.Scrolled}`}>
                 <input type="text" {...register('name')} />
                 <button>Search</button>
             </form>
-            <div className={css.SearchMovie}>{moviesSearch.map((movieSearch)=><QueryMovie key={movieSearch.id} movieSearch={movieSearch}/>)}</div>
+            <div className={`${css.SearchMovie} ${css.Content}`}>{moviesSearch.map((movieSearch)=><QueryMovie key={movieSearch.id} movieSearch={movieSearch}/>)}</div>
             <div className={css.DivBut}>
                 <button
                     disabled={isPrevButtonDisabled}

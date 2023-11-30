@@ -8,7 +8,7 @@ import {useAppSelector} from "../hooks";
 const MainLayount = () => {
     const {theme} = useAppSelector(state => state.themeReducer);
     return (
-        <div  className={theme?css.White:css.Black}>
+        <div  className={`${theme ? css.White : css.Black} ${css.Content}`}>
             <Header />
             <Outlet/>
 

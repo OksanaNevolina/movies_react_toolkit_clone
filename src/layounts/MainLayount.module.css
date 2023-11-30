@@ -1,6 +1,15 @@
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0
+;
+}
 .Black{
-    background-color: #301ce3;
+    background-color: #5e5e62;
 }
 .White{
     background-color: #ced7e7;
+}
+.Content {
+    margin-top: 80px;
 }

@@ -1,19 +1,32 @@
 .Header{
+    background-color: #525156;
+    color: #fff;
     height: 80px;
-    width: 100%;
-    background-color: #96bdb1;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-sizing: border-box;
+    align-items: center;
+    transition: background-color 0.3s ease;
+
 
 }
+
+.Scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+
 .Navlink{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 40%;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
 
 
@@ -40,10 +53,4 @@
     align-items: center;
 
 
-}
-.Black{
-    background-color: #301ce3;
-}
-.White{
-    background-color: #ced7e7;
 }
