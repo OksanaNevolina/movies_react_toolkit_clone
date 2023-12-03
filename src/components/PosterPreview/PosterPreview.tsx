@@ -15,7 +15,6 @@ const PosterPreview = () => {
     useEffect(()=>{
 dispatch(moviesActions.getPhoto({id}))
     },[movie_id])
-    console.log(posters)
 
     return (
         <div >

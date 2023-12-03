@@ -1,9 +1,10 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 
+import {Switch} from "@mui/material";
+
 import css from './Header.module.css'
 import {UserInfo} from "../UserInfo/UserInfo";
-import {Switch} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {changeTheme} from "../../redux";
 

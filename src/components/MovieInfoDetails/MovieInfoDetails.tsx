@@ -1,13 +1,14 @@
 import React, {FC, useEffect} from 'react';
-import {IMovieId} from "../../interfaces";
-import {Rating, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+
+import {Rating, Typography} from "@mui/material";
+
+import {IMovieId} from "../../interfaces";
 import {urls} from "../../constants";
 import css from './MovieInfoDetails.module.css'
-import {useAppDispatch, useAppSelector} from "../../hooks";
+import {useAppDispatch, useAppSelector, useTitle} from "../../hooks";
 import {Cast} from "../Cast/Cast";
 import {moviesActions} from "../../redux";
-import {useTitle} from "../../hooks/useTitle";
 
 interface IProps {
     movieDetails:IMovieId

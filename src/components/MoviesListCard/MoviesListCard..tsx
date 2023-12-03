@@ -1,15 +1,17 @@
 import React, {FC} from 'react';
+import {useNavigate} from "react-router-dom";
+
+import {Rating, Typography} from "@mui/material";
+
 import {IMovie} from "../../interfaces";
 import {urls} from "../../constants";
-import {Rating, Typography} from "@mui/material";
 import css from './MoviesListCard.module.css'
-import {useNavigate} from "react-router-dom";
 
 interface IProps {
    movie:IMovie
 }
 const MoviesListCard:FC<IProps> = ({movie}) => {
-    const {genre_ids,original_title,id,poster_path,vote_average} = movie;
+    const {original_title,id,poster_path,vote_average} = movie;
     const navigate = useNavigate();
     return (
         <div className={css.CardMovie} onClick={()=>navigate(`${id}`)}>

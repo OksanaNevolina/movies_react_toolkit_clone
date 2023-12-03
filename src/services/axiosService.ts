@@ -1,9 +1,6 @@
-import axios, {AxiosResponse} from "axios"
+import axios from "axios"
 
 import {baseURl} from "../constants";
-
-
-export type IRes<T>= Promise<AxiosResponse<T>>
 
 
 const axiosService = axios.create({baseURL:baseURl})

@@ -17,7 +17,7 @@ const MoviesList = () => {
 
     useEffect(()=>{
         dispatch(moviesActions.getMoviesList({page}))
-    },[page])
+    },[dispatch,page])
 
     const filteredMovies = moviesList.filter(function(movie) {
         return movie.genre_ids.includes(+id);

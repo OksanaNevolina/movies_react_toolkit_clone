@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 
 import css from './GenreBadge.module.css'
 import {useAppDispatch, useAppSelector} from "../../hooks";
-
 import {GenresInfo} from "../GenresInfo/GenresInfo";
 import {genresActions} from "../../redux";
 
@@ -12,7 +11,7 @@ const GenreBadge = () => {
     const dispatch = useAppDispatch();
     useEffect(()=>{
 dispatch(genresActions.getGenres())
-        },[])
+        },[dispatch])
         console.log(genres)
         return (
             <div className={css.GenreWrap}>

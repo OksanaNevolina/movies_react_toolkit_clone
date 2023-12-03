@@ -13,7 +13,6 @@ const themeSlice = createSlice({
         changeTheme:state=>{
             state.theme= !state.theme
         }
-        // changeTheme:()=> changeTheme(prevState => !prevState)
     },
     extraReducers:builder => builder
 })

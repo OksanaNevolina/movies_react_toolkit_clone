@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
 import {SubmitHandler, useForm} from "react-hook-form";
+
 import {IWord} from "../../interfaces";
 import css from './Search.module.css'
 import {QueryMovie} from "../QueryMovie/QueryMovie";
@@ -77,7 +78,7 @@ console.log(moviesSearch)
                     disabled={isPrevButtonDisabled}
                     onClick={prev}>prev
                 </button>
-                <div>{currentPage} --{total_pages}</div>
+                <div>{currentPage} - {total_pages}</div>
                 <button
                     disabled={isNextButtonDisabled}
                     onClick={next}>next

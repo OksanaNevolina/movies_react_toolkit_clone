@@ -1,7 +1,6 @@
 export * from './UserInfo/UserInfo'
 export * from './Header/Header'
 export * from './GenreBadge/GenreBadge'
-export * from './StarsRating/StarsRating'
 export * from './MovieInfo/MovieInfo'
 export * from './PosterPreview/PosterPreview'
 export * from './MoviesListCard/MoviesListCard.'

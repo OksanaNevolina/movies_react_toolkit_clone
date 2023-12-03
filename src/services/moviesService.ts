@@ -1,7 +1,7 @@
-import {axiosService, IRes} from "./axiosService";
-import {IMovieId, IResCast, IResponseMovies} from "../interfaces";
+import {axiosService} from "./axiosService";
 import {urls} from "../constants";
-import {IPhoto} from "../interfaces/InterfacePhoto";
+import {IMovieId, IPhoto, IResCast, IResponseMovies} from "../interfaces";
+import {IRes} from "../types";
 
 const moviesService ={
     getAll:(page:string):IRes<IResponseMovies> => axiosService.get(urls.movie.base(), {params:{page}}),

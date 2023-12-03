@@ -1,9 +1,11 @@
-import {IMovie} from "../../interfaces";
 import {FC} from "react";
 import {useNavigate} from "react-router-dom";
-import {urls} from "../../constants";
+
 import {Rating, Typography} from "@mui/material";
+
+import {urls} from "../../constants";
 import css from './QueryMovie.module.css'
+import {IMovie} from "../../interfaces";
 
 interface Iprops {
     movieSearch:IMovie
