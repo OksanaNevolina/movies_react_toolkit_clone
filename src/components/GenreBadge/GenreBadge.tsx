@@ -17,7 +17,6 @@ dispatch(genresActions.getGenres())
         return (
             <div className={css.GenreWrap}>
                 {genres.map(genre=><GenresInfo key={genre.id} genre={genre}/>)}
-
             </div>
         );
     };

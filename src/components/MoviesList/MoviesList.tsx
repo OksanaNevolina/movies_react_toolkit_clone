@@ -31,22 +31,14 @@ const MoviesList = () => {
                 <div className={css.ListMovie}>{moviesList.map(movie => <MoviesListCard key={movie.id}
                                                                                         movie={movie}/>)}</div>
             },
-            {id ?
-                <Pagination
+             <Pagination
                     count={total_pages}
                     defaultPage={+query.get('page')}
                     variant="outlined"
                     color="primary"
                     onChange={(event, page)=>setQuery({page: page.toString()})}
                 />
-                : <Pagination
-                    count={total_pages}
-                    defaultPage={+query.get('page')}
-                    variant="outlined"
-                    color="primary"
-                    onChange={(event, page)=>setQuery({page: page.toString()})}
-                />
-            }
+
 
 </div>
     );
